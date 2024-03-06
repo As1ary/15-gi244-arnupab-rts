@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "15-gi244-arnupab-rts-main.sln"
+    "dotnet.defaultSolution": "15-gi244-arnupab-rts.sln"
 }
