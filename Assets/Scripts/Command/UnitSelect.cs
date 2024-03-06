@@ -66,6 +66,7 @@ public class UnitSelect : MonoBehaviour
     private void ShowBuilding(Building b)
     {
         InfoManager.instance.ShowAllInfo(b);
+        ActionManager.Instance.ShowCreateUnitMode(b);
     }
 
     private void TrySelect(Vector2 screenPos)
