@@ -1,19 +1,18 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
 public class ActionManager : MonoBehaviour
 {
     [SerializeField] private Button[] unitBtns;
     [SerializeField] private Button[] buildingBtns;
-
     private CanvasGroup cg;
-    public static ActionManager Instance;
 
-    void Awake()
+    public static ActionManager instance;
+    private void Awake()
     {
-        Instance = this;
+        instance = this;
         cg = GetComponent<CanvasGroup>();
     }
     private void HideCreateUnitButtons()
@@ -21,6 +20,7 @@ public class ActionManager : MonoBehaviour
         for (int i = 0; i < unitBtns.Length; i++)
             unitBtns[i].gameObject.SetActive(false);
     }
+
     private void HideCreateBuildingButtons()
     {
         for (int i = 0; i < buildingBtns.Length; i++)
@@ -50,7 +50,6 @@ public class ActionManager : MonoBehaviour
             for (int i = 0; i < u.Builder.BuildingList.Length; i++)
             {
                 buildingBtns[i].gameObject.SetActive(true);
-
                 if (u.Builder.BuildingList[i] != null)
                 {
                     buildingBtns[i].GetComponent<Button>().interactable = true;
@@ -71,7 +70,6 @@ public class ActionManager : MonoBehaviour
         ClearAllInfo();
         ShowCreateUnitButtons(b);
     }
-
     public void ShowBuilderMode(Unit unit)
     {
         ClearAllInfo();
@@ -82,11 +80,19 @@ public class ActionManager : MonoBehaviour
         //Debug.Log("Create " + n);
         UnitSelect.instance.CurBuilding.ToCreateUnit(n);
     }
-
     public void CreateBuildingButton(int n)//Map with Create Building Btns
     {
         //Debug.Log("1 - Click Button: " + n);
     }
 
+    void Start()
+    {
 
+    }
+
+    void Update()
+    {
+
+    }
 }
+
