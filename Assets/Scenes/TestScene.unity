@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641275, b: 0.5748172, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3549,6 +3549,14 @@ MonoBehaviour:
   state: 0
   faction: {fileID: 0}
   selectionVisual: {fileID: 0}
+  unitCost:
+    food: 0
+    wood: 0
+    gold: 0
+    stone: 0
+  unitWaitTime: 0.1
+  isBuilder: 0
+  builder: {fileID: 0}
 --- !u!114 &1077835898
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7148,6 +7156,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -9177017397577713839, guid: b262122646574d049bde22dba03aa8ea, type: 3}
+      propertyPath: m_Height
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -9177017397577713839, guid: b262122646574d049bde22dba03aa8ea, type: 3}
+      propertyPath: m_Center.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 192002, guid: b262122646574d049bde22dba03aa8ea, type: 3}
       propertyPath: m_Name
       value: Character_Pirate_Blackbeard_01 1
