@@ -107,6 +107,7 @@ public class UnitSelect : MonoBehaviour
         }
         if (Input.GetMouseButtonUp(0))
         {
+            Debug.Log("1");
             TrySelect(Input.mousePosition);
         }
     }
