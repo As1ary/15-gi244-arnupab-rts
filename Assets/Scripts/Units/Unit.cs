@@ -84,6 +84,9 @@ public class Unit : MonoBehaviour
     private void Awake()
     {
         navAgent = GetComponent<NavMeshAgent>();
+
+        if (IsBuilder)
+            builder = GetComponent<Builder>();
     }
 
     public void ToggleSelectionVisual(bool flag)
