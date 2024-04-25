@@ -204,8 +204,8 @@ MonoBehaviour:
   curUnitProgress: 0
   curUnitWaitTime: 1.46
   isFunctional: 1
-  isHQ: 0
-  intoTheGround: 2
+  isHQ: 1
+  intoTheGround: 3
 --- !u!65 &2919282597519406525
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -225,8 +225,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 18.29, y: 18.496347, z: 16.662718}
-  m_Center: {x: 1.0234286e-14, y: 10.082557, z: 8.720172}
+  m_Size: {x: 18.29, y: 18.496346, z: 17.215483}
+  m_Center: {x: 0, y: 9, z: 8.996554}
 --- !u!208 &5460990110992246890
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -237,11 +237,11 @@ NavMeshObstacle:
   m_Enabled: 1
   serializedVersion: 3
   m_Shape: 1
-  m_Extents: {x: 9.145, y: 9.001585, z: 10.1}
+  m_Extents: {x: 9.145, y: 9.248175, z: 8.60774}
   m_MoveThreshold: 0.1
   m_Carve: 1
   m_CarveOnlyStationary: 1
-  m_Center: {x: 1.023429e-14, y: 10.08256, z: 8.720172}
+  m_Center: {x: 0, y: 9, z: 8.996554}
   m_TimeToStationary: 0.5
 --- !u!54 &-3503350121091712474
 Rigidbody:
@@ -265,7 +265,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 126
