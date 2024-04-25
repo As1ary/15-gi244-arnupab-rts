@@ -1719,7 +1719,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &517705624
 Transform:
   m_ObjectHideFlags: 0
@@ -4520,7 +4520,7 @@ PrefabInstance:
     - target: {fileID: -8550079570951313648, guid: 93f5d872abfa2614a8f2ff6983143e48, type: 3}
       propertyPath: aliveUnits.Array.data[1]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: -6854190734728951113, guid: 28a9a66828259e541a24a73e0f5e65db, type: 3}
     - target: {fileID: -8550079570951313648, guid: 93f5d872abfa2614a8f2ff6983143e48, type: 3}
       propertyPath: aliveBuildings.Array.size
       value: 2
@@ -4528,7 +4528,7 @@ PrefabInstance:
     - target: {fileID: -8550079570951313648, guid: 93f5d872abfa2614a8f2ff6983143e48, type: 3}
       propertyPath: aliveBuildings.Array.data[0]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1309295213}
     - target: {fileID: -8550079570951313648, guid: 93f5d872abfa2614a8f2ff6983143e48, type: 3}
       propertyPath: aliveBuildings.Array.data[1]
       value: 
@@ -4944,6 +4944,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1277408065}
   m_CullTransparentMesh: 1
+--- !u!114 &1309295213 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3161734443816317693, guid: 18e56e03ec01ccd43a8b3a95af9fb275, type: 3}
+  m_PrefabInstance: {fileID: 1645170334}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cedabdc1f3a4f246953d0a9d2217c0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1355006331
 GameObject:
   m_ObjectHideFlags: 0
@@ -5921,13 +5932,25 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1490021711805821025, guid: 18e56e03ec01ccd43a8b3a95af9fb275, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3161734443816317693, guid: 18e56e03ec01ccd43a8b3a95af9fb275, type: 3}
+      propertyPath: faction
+      value: 
+      objectReference: {fileID: 1222414662}
+    - target: {fileID: 3161734443816317693, guid: 18e56e03ec01ccd43a8b3a95af9fb275, type: 3}
+      propertyPath: unitPrefabs.Array.data[1]
+      value: 
+      objectReference: {fileID: 105566, guid: 28a9a66828259e541a24a73e0f5e65db, type: 3}
     - target: {fileID: 3820630051243162226, guid: 18e56e03ec01ccd43a8b3a95af9fb275, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.3970547
       objectReference: {fileID: 0}
     - target: {fileID: 3820630051243162226, guid: 18e56e03ec01ccd43a8b3a95af9fb275, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.0000019073486
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3820630051243162226, guid: 18e56e03ec01ccd43a8b3a95af9fb275, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5966,7 +5989,8 @@ PrefabInstance:
       value: Headquarter
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 2548620375845029472, guid: 18e56e03ec01ccd43a8b3a95af9fb275, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 18e56e03ec01ccd43a8b3a95af9fb275, type: 3}
@@ -8830,5 +8854,5 @@ SceneRoots:
   - {fileID: 883743428}
   - {fileID: 1479594513}
   - {fileID: 1761803689}
-  - {fileID: 1817935111}
   - {fileID: 1645170334}
+  - {fileID: 1817935111}
