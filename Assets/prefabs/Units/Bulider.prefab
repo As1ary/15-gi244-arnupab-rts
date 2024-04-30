@@ -400,15 +400,17 @@ MonoBehaviour:
   faction: {fileID: 0}
   selectionVisual: {fileID: 5948723777320871926}
   unitCost:
-    food: 0
-    wood: 0
-    gold: 0
+    food: 50
+    wood: 10
+    gold: 20
     stone: 0
   unitWaitTime: 0.01
   isBuilder: 1
   builder: {fileID: 0}
   isWorker: 1
   worker: {fileID: 0}
+  pathUpdateRate: 1
+  lastPathUpdateTime: 0
 --- !u!136 &885177973253764592
 CapsuleCollider:
   m_ObjectHideFlags: 0

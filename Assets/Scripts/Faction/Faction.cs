@@ -41,6 +41,9 @@ public class Faction : MonoBehaviour
 
         [SerializeField] private Transform ghostBuildingParent;
         public Transform GhostBuildingParent { get { return ghostBuildingParent; } }
+        [SerializeField]
+        private Transform startPosition; //start position for Faction
+        public Transform StartPosition { get { return startPosition; } }
         public bool CheckUnitCost(Unit unit)
         {
             if (food < unit.UnitCost.food)
@@ -57,8 +60,17 @@ public class Faction : MonoBehaviour
 
             return true;
         }
+        public Vector3 GetHQSpawnPos()
+        {
+            foreach (Building b in aliveBuildings)
+            {
+                if (b.IsHQ)
+                    return b.SpawnPoint.position;
+            }
+            return startPosition.position;
+        }
 
-        public void DeductUnitCost(Unit unit)
+    public void DeductUnitCost(Unit unit)
         {
             food -= unit.UnitCost.food;
             wood -= unit.UnitCost.wood;
@@ -97,7 +109,27 @@ public class Faction : MonoBehaviour
             gold -= building.StructureCost.gold;
             stone -= building.StructureCost.stone;
         }
+        public void GainResource(ResourceType resourceType, int amount)
+        {
+            switch (resourceType)
+            {
+                case ResourceType.Food:
+                    food += amount;
+                    break;
+                case ResourceType.Wood:
+                    wood += amount;
+                    break;
+                case ResourceType.Gold:
+                    gold += amount;
+                    break;
+                case ResourceType.Stone:
+                    stone += amount;
+                    break;
+            }
 
+            if (this == GameManager.instance.MyFaction)
+            MainUI.instance.UpdateAllResource(this);
+        }
 
 
 }
