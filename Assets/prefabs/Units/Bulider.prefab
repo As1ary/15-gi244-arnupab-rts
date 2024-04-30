@@ -278,6 +278,7 @@ GameObject:
   - component: {fileID: -6854190734728951113}
   - component: {fileID: 885177973253764592}
   - component: {fileID: 755273109074775002}
+  - component: {fileID: 2103692993363242359}
   m_Layer: 6
   m_Name: Bulider
   m_TagString: Unit
@@ -406,6 +407,8 @@ MonoBehaviour:
   unitWaitTime: 0.01
   isBuilder: 1
   builder: {fileID: 0}
+  isWorker: 1
+  worker: {fileID: 0}
 --- !u!136 &885177973253764592
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -452,6 +455,24 @@ MonoBehaviour:
   newBuilding: {fileID: 0}
   ghostBuilding: {fileID: 0}
   inProgressBuilding: {fileID: 0}
+--- !u!114 &2103692993363242359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 105566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 230232123c18a9644ae19ef197f82063, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  curResourceSource: {fileID: 0}
+  gatherRate: 0.5
+  gatherAmount: 1
+  amountCarry: 0
+  maxCarry: 25
+  carryType: 1
 --- !u!1 &106418
 GameObject:
   m_ObjectHideFlags: 0
