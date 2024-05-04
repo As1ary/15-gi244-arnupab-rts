@@ -113,7 +113,7 @@ public class Worker : MonoBehaviour
             unit.Faction.GainResource(carryType, amountCarry);
             amountCarry = 0;
 
-            //Debug.Log("Delivered");
+            Debug.Log("Delivered");
         }
     }
 
