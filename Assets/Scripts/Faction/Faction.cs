@@ -44,6 +44,10 @@ public class Faction : MonoBehaviour
         [SerializeField]
         private Transform startPosition; //start position for Faction
         public Transform StartPosition { get { return startPosition; } }
+        
+        [SerializeField]
+        private int newResourceRange = 50; //range for worker to find new resource
+        
         public bool CheckUnitCost(Unit unit)
         {
             if (food < unit.UnitCost.food)
@@ -130,6 +134,44 @@ public class Faction : MonoBehaviour
             if (this == GameManager.instance.MyFaction)
             MainUI.instance.UpdateAllResource(this);
         }
+         public ResourceSource GetClosestResource(Vector3 pos, ResourceType rType)
+    {
+        ResourceSource[] closest = new ResourceSource[2];
+        float[] closestDist = new float[2];
+
+        foreach (ResourceSource resource in ResourceManager.instance.Resources)
+        {
+            if (resource == null)
+                continue;
+
+            if (resource.RsrcType == rType)
+            {
+                float dist = Vector3.Distance(pos, resource.transform.position);
+
+                if (dist <= newResourceRange)
+                {
+                    for (int x = 0; x < closest.Length; x++)
+                     {
+                        if (closest[x] == null)
+                        {
+                            closest[x] = resource;
+                            closestDist[x] = dist;
+                            break;
+                        }
+                        else if (dist < closestDist[x])
+                        {
+                            closest[x] = resource;
+                            closestDist[x] = dist;
+                            break;
+                        }
+
+                    }
+                }
+            }
+        }
+        return closest[UnityEngine.Random.Range(0, closest.Length)];
+    }
+
 
 
 }
