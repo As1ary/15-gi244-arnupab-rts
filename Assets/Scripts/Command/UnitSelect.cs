@@ -41,6 +41,8 @@ public class UnitSelect : MonoBehaviour
 
         if (GameManager.instance.MyFaction.IsMyUnit(unit))
         {
+            curUnits.Add(unit);
+            unit.ToggleSelectionVisual(true);
             ShowUnit(unit);
         }
         else
