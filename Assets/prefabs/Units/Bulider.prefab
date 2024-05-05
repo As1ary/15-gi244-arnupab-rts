@@ -396,7 +396,7 @@ MonoBehaviour:
   armour: 0
   visualRange: 0
   weaponRange: 0
-  state: 0
+  state: 1
   faction: {fileID: 0}
   selectionVisual: {fileID: 5948723777320871926}
   unitCost:
@@ -411,6 +411,11 @@ MonoBehaviour:
   worker: {fileID: 0}
   pathUpdateRate: 1
   lastPathUpdateTime: 2
+  curEnemyUnitTarget: {fileID: 0}
+  curEnemyBuildingTarget: {fileID: 0}
+  attackRate: 1
+  lastAttackTime: 0
+  defendRange: 30
 --- !u!136 &885177973253764592
 CapsuleCollider:
   m_ObjectHideFlags: 0

@@ -20,6 +20,14 @@ public class UnitSelect : MonoBehaviour
     private Faction faction;
     [SerializeField]
     private ResourceSource curResource; //current selected resource
+     [SerializeField]
+    private RectTransform selectionBox;
+    private Vector2 oldAnchoredPos;//Box old anchored position
+    private Vector2 startPos;//point where mouse is down
+    [SerializeField]
+    private Unit curEnemy;
+
+
     public static UnitSelect instance;
     private void Awake()
     {
@@ -34,6 +42,12 @@ public class UnitSelect : MonoBehaviour
         if (GameManager.instance.MyFaction.IsMyUnit(unit))
         {
             ShowUnit(unit);
+        }
+        else
+        {
+            curEnemy = unit;
+            curEnemy.ToggleSelectionVisual(true);
+            ShowEnemyUnit(unit);
         }
     }
     private void TrySelect(Vector2 screenPos)
@@ -64,16 +78,19 @@ public class UnitSelect : MonoBehaviour
             curBuilding.ToggleSelectionVisual(false);
         if (curResource != null)
             curResource.ToggleSelectionVisual(false);
+        if (curEnemy != null)
+            curEnemy.ToggleSelectionVisual(false);
 
     }
 
     private void ClearEverything()
     {
         ClearAllSelectionVisual();
-        curUnits = null;
+        curUnits.Clear();
         curBuilding = null;
 
         InfoManager.instance.ClearAllInfo();
+        ActionManager.instance.ClearAllInfo();
     }
     private void ShowUnit(Unit u)
     {
@@ -86,6 +103,10 @@ public class UnitSelect : MonoBehaviour
         InfoManager.instance.ShowAllInfo(b);
         ActionManager.instance.ShowCreateUnitMode(b);
     }
+    private void ShowEnemyBuilding(Building b)
+    {
+        InfoManager.instance.ShowEnemyAllInfo(b);
+    }
     private void BuildingSelect(RaycastHit hit)
     {
         curBuilding = hit.collider.GetComponent<Building>();
@@ -95,6 +116,11 @@ public class UnitSelect : MonoBehaviour
         {
             Debug.Log("my building");
             ShowBuilding(curBuilding);//Show building info
+        }
+        else
+        {
+            Debug.Log("enemy building");
+            ShowEnemyBuilding(curBuilding);
         }
     }
 
@@ -113,12 +139,60 @@ public class UnitSelect : MonoBehaviour
         curResource.ToggleSelectionVisual(true);
         ShowResource();//Show resource info
     }
+    private void UpdateSelectionBox(Vector3 mousePos)
+    {
+        //Debug.Log("Mouse Pos - " + mousePos);
+        if (!selectionBox.gameObject.activeInHierarchy && curBuilding == null)
+            selectionBox.gameObject.SetActive(true);
 
+        float width = mousePos.x - startPos.x;
+        float height = mousePos.y - startPos.y;
+
+        selectionBox.sizeDelta = new Vector2(Mathf.Abs(width), Mathf.Abs(height));
+        selectionBox.anchoredPosition = startPos + new Vector2(width / 2, height / 2);
+
+        //store old position for real unit selection
+        oldAnchoredPos = selectionBox.anchoredPosition;
+    }
+     private void ReleaseSelectionBox(Vector2 mousePos)
+    {
+        //Debug.Log("Step 2 - " + Release Mouse);
+        Vector2 min; //down-left corner
+        Vector2 max; //top-right corner
+
+        selectionBox.gameObject.SetActive(false);
+
+        min = oldAnchoredPos - (selectionBox.sizeDelta / 2);
+        max = oldAnchoredPos + (selectionBox.sizeDelta / 2);
+
+        //Debug.Log("min = " + min);
+        //Debug.Log("max = " + max);
+
+        foreach (Unit unit in GameManager.instance.MyFaction.AliveUnits)
+        {
+            Vector2 unitPos = cam.WorldToScreenPoint(unit.transform.position);
+
+            if (unitPos.x > min.x && unitPos.x < max.x && unitPos.y > min.y && unitPos.y < max.y)
+            {
+                curUnits.Add(unit);
+                unit.ToggleSelectionVisual(true);
+            }
+        }
+        selectionBox.sizeDelta = new Vector2(0, 0); //clear Selection Box's size;
+    }
+
+    private void ShowEnemyUnit(Unit u)
+    {
+        InfoManager.instance.ShowEnemyAllInfo(u);
+    }
 
     void Start()
     {
         cam = Camera.main;
         layerMask = LayerMask.GetMask("Unit", "Building", "Resource", "Ground");
+
+        selectionBox = MainUI.instance.SelectionBox;
+
         instance = this;
     }
 
@@ -126,15 +200,20 @@ public class UnitSelect : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
+            startPos = Input.mousePosition;
             if (EventSystem.current.IsPointerOverGameObject())
             {
                 return;
             }
             ClearEverything();
         }
+        if (Input.GetMouseButton(0))
+        {
+            UpdateSelectionBox(Input.mousePosition);
+        }
         if (Input.GetMouseButtonUp(0))
         {
-            Debug.Log("1");
+            ReleaseSelectionBox(Input.mousePosition);
             TrySelect(Input.mousePosition);
         }
     }

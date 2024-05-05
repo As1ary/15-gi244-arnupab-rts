@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System;
 
 public class MainUI : MonoBehaviour
 {
@@ -14,6 +15,9 @@ public class MainUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI woodText;
     [SerializeField] private TextMeshProUGUI goldText;
     [SerializeField] private TextMeshProUGUI stoneText;
+    [SerializeField] private RectTransform selectionBox;
+    public RectTransform SelectionBox { get { return selectionBox; } }
+
     public static MainUI instance;
 
     public void UpdateAllResource(Faction faction)
@@ -40,4 +44,6 @@ public class MainUI : MonoBehaviour
     {
         
     }
+
+
 }

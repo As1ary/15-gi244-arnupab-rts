@@ -34,7 +34,7 @@ public class UnitAnimation : MonoBehaviour
             case UnitState.Move:
                 anim.SetBool("IsMove", true);
                 break;
-            case UnitState.Attack:
+            case UnitState.AttackUnit:
                 anim.SetBool("IsAttack", true);
                 break;
             case UnitState.MoveToBuild:
@@ -43,6 +43,9 @@ public class UnitAnimation : MonoBehaviour
             case UnitState.BuildProgress:
                 anim.SetBool("IsBuilding", true);
                 break; 
+            case UnitState.MoveToEnemy:
+                anim.SetBool("IsMove", true);
+                break;
         }
     }
 }
