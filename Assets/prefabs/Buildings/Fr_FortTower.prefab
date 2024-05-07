@@ -54,8 +54,9 @@ GameObject:
   - component: {fileID: 6530486655869235629}
   - component: {fileID: 3544015606990873513}
   - component: {fileID: 5872647630535581289}
+  - component: {fileID: 6974499570596776493}
   m_Layer: 7
-  m_Name: FortTower
+  m_Name: Fr_FortTower
   m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -122,7 +123,7 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
@@ -156,8 +157,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   structureName: 
   structurePic: {fileID: 0}
-  curHP: 0
-  maxHP: 0
+  curHP: 100
+  maxHP: 100
   faction: {fileID: 0}
   selectionVisual: {fileID: 6004242214846598150}
   spawnPoint: {fileID: 0}
@@ -169,6 +170,8 @@ MonoBehaviour:
   curUnitWaitTime: 0
   isFunctional: 0
   isHQ: 0
+  isHousing: 0
+  isBarrack: 0
   intoTheGround: 5
   unitLayerMask:
     serializedVersion: 2
@@ -178,6 +181,18 @@ MonoBehaviour:
   shootRange: 50
   shootDamage: 10
   state: 0
+--- !u!114 &6974499570596776493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4470171462736682740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90d14623ac133f040b933dc321900a7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &207461340922200644
 PrefabInstance:
   m_ObjectHideFlags: 0

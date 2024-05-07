@@ -80,16 +80,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nation: 1
-  food: 0
-  wood: 0
-  gold: 0
-  stone: 0
+  food: 1000
+  wood: 600
+  gold: 500
+  stone: 200
   aliveUnits: []
-  aliveBuildings: []
+  aliveBuildings:
+  - {fileID: 0}
   unitsParent: {fileID: 8226230142212964489}
   buildingsParent: {fileID: 2439737438615739499}
   ghostBuildingParent: {fileID: 2552050246076137076}
   startPosition: {fileID: 848616040227874498}
+  newResourceRange: 50
+  buildingPrefabs:
+  - {fileID: 4037579095990353670, guid: 18e56e03ec01ccd43a8b3a95af9fb275, type: 3}
+  - {fileID: 3010113238276726730, guid: c7b33834014964044bb13f84e3e49637, type: 3}
+  - {fileID: 4037579095990353670, guid: b1b70721bbae0464bb7c0e60ca80bc0e, type: 3}
+  - {fileID: 4470171462736682740, guid: 68d94f0186b87fa428e04e4ddfd024eb, type: 3}
+  ghostBuildingPrefabs:
+  - {fileID: 4037579095990353670, guid: 52f69a905833ed94ca3342270f1c35b9, type: 3}
+  - {fileID: 3010113238276726730, guid: f21b52ad423e6de428ad208e45e72faa, type: 3}
+  - {fileID: 4037579095990353670, guid: 8201844b474a5bf41b4151f0a335a4dc, type: 3}
+  - {fileID: 4470171462736682740, guid: 551692a496a7acd4995379d6196bb519, type: 3}
+  unitPrefabs:
+  - {fileID: 5600832528216876907, guid: 49cadb52e449e6745847024fa0237187, type: 3}
+  - {fileID: 105566, guid: 28a9a66828259e541a24a73e0f5e65db, type: 3}
 --- !u!1 &7106763578341792484
 GameObject:
   m_ObjectHideFlags: 0
@@ -115,7 +130,7 @@ Transform:
   m_GameObject: {fileID: 7106763578341792484}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 639.11237, y: 680.45636, z: -5.5420966}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -146,7 +161,7 @@ Transform:
   m_GameObject: {fileID: 7473634222456369642}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 639.11237, y: 680.45636, z: -5.5420966}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -177,7 +192,7 @@ Transform:
   m_GameObject: {fileID: 8815266023048078844}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 639.11237, y: 680.45636, z: -5.5420966}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

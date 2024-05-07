@@ -25,6 +25,12 @@ public class Building : Structure
     [SerializeField] private bool isHQ;
     public bool IsHQ {get {return isHQ;}}
 
+    [SerializeField] private bool isHousing;
+    public bool IsHousing {get {return isHousing;}}
+
+    [SerializeField] private bool isBarrack;
+    public bool IsBarrack {get{return isBarrack;}}
+
     [SerializeField] private float intoTheGround = 5f;
     public float IntoTheGround {get {return intoTheGround;}}
 
@@ -69,7 +75,7 @@ public class Building : Structure
         if (unitPrefabs[id] == null)
             return;
 
-        GameObject unitObj = Instantiate(unitPrefabs[id], 
+        GameObject unitObj = Instantiate(faction.UnitPrefabs[id], 
                                         spawnPoint.position, 
                                         Quaternion.Euler(0f, 180f, 0f),
                                         faction.UnitsParent);
@@ -108,13 +114,11 @@ public class Building : Structure
                 curUnitProgress++;
                 unitTimer = 0f;
 
-                if (curUnitProgress >= 100)
+                if (curUnitProgress >= 100 && (faction.AliveUnits.Count < faction.UnitLimit))
                 {
                     curUnitProgress = 0;
                     curUnitWaitTime = 0f;
                     CreateUnitCompleted();
-
-
                 }
             }
         }
@@ -124,5 +128,16 @@ public class Building : Structure
     private float waitTime = 0.5f; //How fast it will be construct, higher is longer
     public float WaitTime { get { return waitTime; } set { waitTime = value; } }
 
+    public int CheckNumInRecruitList(int id)
+    {
+        int num = 0;
+
+        foreach (Unit u in recruitList)
+        {
+            if (id == u.ID)
+                num++;
+        }
+        return num;
+    }
     
 }

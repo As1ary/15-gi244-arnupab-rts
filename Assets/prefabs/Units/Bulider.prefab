@@ -385,7 +385,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be5cf0b3be5c55946ba3a2135d3fe256, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 1
+  id: 0
   unitName: Bulider
   unitPic: {fileID: 21300000, guid: 4c1b9a36018a51b44ad3d80c66eb91be, type: 3}
   curHP: 50
@@ -457,10 +457,12 @@ MonoBehaviour:
   - {fileID: 4037579095990353670, guid: 18e56e03ec01ccd43a8b3a95af9fb275, type: 3}
   - {fileID: 3010113238276726730, guid: c7b33834014964044bb13f84e3e49637, type: 3}
   - {fileID: 4470171462736682740, guid: 68d94f0186b87fa428e04e4ddfd024eb, type: 3}
+  - {fileID: 4037579095990353670, guid: b1b70721bbae0464bb7c0e60ca80bc0e, type: 3}
   ghostBuildingList:
   - {fileID: 4037579095990353670, guid: 52f69a905833ed94ca3342270f1c35b9, type: 3}
   - {fileID: 3010113238276726730, guid: f21b52ad423e6de428ad208e45e72faa, type: 3}
   - {fileID: 4470171462736682740, guid: 551692a496a7acd4995379d6196bb519, type: 3}
+  - {fileID: 4037579095990353670, guid: 8201844b474a5bf41b4151f0a335a4dc, type: 3}
   newBuilding: {fileID: 0}
   ghostBuilding: {fileID: 0}
   inProgressBuilding: {fileID: 0}
@@ -4231,7 +4233,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f81a978cf85038f41a62cf0aad8c2981, type: 2}
+  - {fileID: 2100000, guid: ce19f20337e1d6545bddd9bc3ba7de65, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

@@ -48,6 +48,13 @@ public class Faction : MonoBehaviour
         [SerializeField]
         private int newResourceRange = 50; //range for worker to find new resource
         
+        [SerializeField] private GameObject[] buildingPrefabs;
+        public GameObject[] BuildingPrefabs { get { return buildingPrefabs; } }
+
+        [SerializeField] private GameObject[] ghostBuildingPrefabs;
+        public GameObject[] GhostBulidingPrefabs {get { return ghostBuildingPrefabs;}}
+        [SerializeField] private GameObject[] unitPrefabs;
+        public GameObject[] UnitPrefabs { get { return unitPrefabs; } }
         public bool CheckUnitCost(Unit unit)
         {
             if (food < unit.UnitCost.food)
@@ -68,13 +75,15 @@ public class Faction : MonoBehaviour
         {
             foreach (Building b in aliveBuildings)
             {
+                if (b == null)
+                    continue;
                 if (b.IsHQ)
                     return b.SpawnPoint.position;
             }
             return startPosition.position;
         }
 
-    public void DeductUnitCost(Unit unit)
+        public void DeductUnitCost(Unit unit)
         {
             food -= unit.UnitCost.food;
             wood -= unit.UnitCost.wood;
@@ -171,7 +180,87 @@ public class Faction : MonoBehaviour
         }
         return closest[UnityEngine.Random.Range(0, closest.Length)];
     }
+    private int unitLimit = 6; //Initial unit limit
+    public int UnitLimit { get { return unitLimit; } }
+    private int housingUnitNum = 5; //number of units per each housing
+    public int HousingUnitNum { get { return housingUnitNum; } }
+     public void UpdateHousingLimit()
+    {
+        unitLimit = 6; //starting unit Limit
 
+        foreach (Building b in aliveBuildings)
+        {
+            if (b.IsHousing && b.IsFunctional)
+            {
+                unitLimit += housingUnitNum;
+            }
+        }
 
+        if (unitLimit >= 100)
+            unitLimit = 100;
+        else if (unitLimit < 0)
+            unitLimit = 0;
+
+        if(this == GameManager.instance.MyFaction)
+            MainUI.instance.UpdateAllResource(this);
+    }
+    public bool CheckUnitCost(int i)
+    {
+        Unit unit = unitPrefabs[i].GetComponent<Unit>();
+
+        if (unit == null)
+            return false;
+
+        if (food < unit.UnitCost.food)
+            return false;
+
+        if (wood < unit.UnitCost.wood)
+            return false;
+
+        if (gold < unit.UnitCost.gold)
+            return false;
+
+        if (stone < unit.UnitCost.stone)
+            return false;
+
+        return true;
+    }
+    public void Start()
+    {
+        UpdateHousingLimit();
+    }
+    public Color GetNationColor()
+{
+    Color col;
+
+    switch(nation)
+    {
+        case Nation.neutral:
+            col = Color.white;
+            break;
+        case Nation.Britain:
+            col = Color.red;
+            break;
+        case Nation.Pirates:
+            col = Color.black;
+            break;
+        case Nation.France:
+            col = Color.blue;
+            break;
+        case Nation.Spain:
+            col = Color.yellow;
+            break;
+        case Nation.Portuguese:
+            col = Color.green;
+            break;
+        case Nation.Dutch:
+            col = new Color32 (255, 157, 0, 255);
+            break;
+        default:
+            col = Color.white;
+            break;
+    }
+    return col;
+}
 
 }
