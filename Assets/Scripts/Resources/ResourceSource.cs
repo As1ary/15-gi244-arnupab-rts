@@ -47,6 +47,7 @@ public class ResourceSource : MonoBehaviour
             amountToGive = amountRequest;
 
         quantity -= amountToGive;
+        onRsrcQuantityChange.Invoke();
 
         // if we're depleted, delete the resource
         if (quantity <= 0)
@@ -60,6 +61,10 @@ public class ResourceSource : MonoBehaviour
     {
         if (SelectionVisual != null)
             SelectionVisual.SetActive(selected);
+    }
+    void Start()
+    {
+        onRsrcQuantityChange.Invoke();
     }
 
     void Update()
